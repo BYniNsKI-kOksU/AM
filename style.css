@@ -560,7 +560,9 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 500px;
+            width: 100%;                /* pełna szerokość */
+    max-width: 900px;           /* opcjonalnie limit */
+    box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -580,7 +582,9 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 500px;
+            width: 100%;                /* pełna szerokość */
+    max-width: 900px;           /* opcjonalnie limit */
+    box-sizing: border-box;
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -608,18 +612,32 @@
             }
 
             .matrix-frame {
-                min-width: 150px;
-                flex-shrink: 0;
-                background-color: transparent;
-                border: none;
-            }
+        min-width: 150px;
+        flex-shrink: 0;
+        background-color: transparent; /* przezroczyste tło dla całej ramki */
+        border: none;
+        padding: 0;
+        width: auto;
+    }
     
-            .matrix-grid {
-                background-color: var(--clr-matrix-bg);
-                border: 1px solid var(--clr-matrix-border);
-                border-radius: 5px;
-                padding: 10px;
-            }
+    .matrix-grid {
+        background-color: var(--clr-matrix-bg); /* białe tło tylko dla siatki */
+        border: 1px solid var(--clr-matrix-border);
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .matrix-title {
+        background-color: var(--clr-matrix-bg); /* białe tło dla tytułu */
+        color: black;
+        border: 1px solid var(--clr-matrix-border);
+        border-bottom: none;
+        border-radius: 5px 5px 0 0;
+        padding: 8px 10px;
+        margin-bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
     
             .method-selector {
                 flex-direction: column;
