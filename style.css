@@ -560,8 +560,7 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 100%;
-            max-width: 500px;
+            width: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -581,8 +580,7 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 100%;
-            max-width: 500px;
+            width: 500px;
             display: none;
             flex-direction: column;
             justify-content: center;
