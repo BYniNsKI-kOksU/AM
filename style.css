@@ -581,7 +581,8 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 300;
+            width: 100%;
+            max-width: 500px;
             display: none;
             flex-direction: column;
             justify-content: center;
