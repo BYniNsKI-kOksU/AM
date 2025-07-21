@@ -560,7 +560,8 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 500px;
+            width: 100%;
+            max-width: 90vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -580,7 +581,8 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 500px;
+            width: 100%;
+            max-width: 90vw;
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -621,7 +623,7 @@
     }
 
     .result-container-matrix, .solution-container {
-        width: calc(100% - 40px);
+        width: 90%;
         font-size: 18px;
     }
 
@@ -633,13 +635,6 @@
         width: 40px;
         height: 25px;
     }
-
-@media (max-height: 500px) {
-    .result-container-matrix {
-        max-width: 90vw;
-        font-size: 18px;
-    }
-}
 }
 
 /* ================= TABLETY ================= */
@@ -677,6 +672,11 @@
 @media (min-width: 1025px) {
     .welcome-title {
         font-size: 3rem;
+    }
+
+    .action-btn {
+        padding: 6px 12px;
+        font-size: 12px;
     }
 
     .start-btn, .check-btn, .action-btn {
