@@ -546,6 +546,19 @@
                     gridElement.appendChild(input);
                 }
             }
+
+            document.querySelectorAll('.size-input').forEach(input => {
+                input.addEventListener('focus', function() {
+                    if (this.value === this.defaultValue) {
+                        this.value = '';
+                    }
+                });
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.value = this.defaultValue;
+                    }   
+                });
+            });
         }
 
         // Pobierz wartości z macierzy

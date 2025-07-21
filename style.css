@@ -438,14 +438,18 @@
 
         .action-buttons {
             display: flex;
+            justify-content: center;
+            width: 100%;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .action-btn {
             background-color: var(--clr-btn-bg);
             color: white;
             border: none;
+            flex: 1;
+            max-width: 120px;
             border-radius: 15px;
             padding: 10px 20px;
             font-size: 14px;
@@ -472,6 +476,9 @@
             border-radius: 5px;
             padding: 10px;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .matrix-title {
@@ -480,11 +487,13 @@
             text-align: center;
             margin-bottom: 10px;
             color: black;
+            width: 100%;
         }
 
         .matrix-grid {
             display: grid;
             gap: 5px;
+            width: 100%;
         }
 
         .matrix-input {
@@ -560,9 +569,9 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 100%;
-            max-width: 600px;
-            box-sizing: border-box;
+            width: 100%;                /* pełna szerokość */
+    max-width: 900px;           /* opcjonalnie limit */
+    box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -582,9 +591,9 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 100%;                /* pełna szerokość */
-    max-width: 900px;           /* opcjonalnie limit */
-    box-sizing: border-box;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -609,35 +618,36 @@
                 justify-content: flex-start;
                 padding: 10px 0;
                 gap: 10px;
+                -webkit-overflow-scrolling: touch;
             }
 
             .matrix-frame {
-        min-width: 150px;
-        flex-shrink: 0;
-        background-color: transparent; /* przezroczyste tło dla całej ramki */
-        border: none;
-        padding: 0;
-        width: auto;
-    }
+                min-width: 180px;
+                flex-shrink: 0;
+                background-color: var(--clr-matrix-bg);
+                border: 1px solid var(--clr-matrix-border);
+                padding: 10;
+                width: auto;
+            }
     
-    .matrix-grid {
-        background-color: var(--clr-matrix-bg); /* białe tło tylko dla siatki */
-        border: 1px solid var(--clr-matrix-border);
-        border-radius: 5px;
-        padding: 10px;
-    }
+            .matrix-grid {
+                background-color: var(--clr-matrix-bg);
+                border: 1px solid var(--clr-matrix-border);
+                border-radius: 5px;
+                padding: 10px;
+            }
 
-    .matrix-title {
-        background-color: var(--clr-matrix-bg); /* białe tło dla tytułu */
-        color: black;
-        border: 1px solid var(--clr-matrix-border);
-        border-bottom: none;
-        border-radius: 5px 5px 0 0;
-        padding: 8px 10px;
-        margin-bottom: 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
+            .matrix-title {
+                background-color: transparent;
+                color: black;
+                border: none;
+                border-bottom: none;
+                border-radius: 5px 5px 0 0;
+                padding: 0;
+                margin-bottom: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
     
             .method-selector {
                 flex-direction: column;
