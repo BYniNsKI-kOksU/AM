@@ -610,22 +610,15 @@
             .matrix-frame {
                 min-width: 150px;
                 flex-shrink: 0;
-                background-color: var(--clr-matrix-bg);
-                border: 1px solid var(--clr-matrix-border);
-                border-radius: 5px;
-                padding: 8px;
-                width: 100%;
-                max-width: 220px;
+                background-color: transparent;
+                border: none;
             }
     
             .matrix-grid {
-                background-color: transparent;
-                border: none;
-                padding: 0;
-            }
-
-            .matrix-title {
-                color: black;
+                background-color: var(--clr-matrix-bg);
+                border: 1px solid var(--clr-matrix-border);
+                border-radius: 5px;
+                padding: 10px;
             }
     
             .method-selector {
@@ -636,6 +629,11 @@
             .method-btn {
                 width: 100%;
                 margin: 2px 0;
+            }
+
+            .result-container-matrix {
+                font-size: 16px;
+                padding: 10px;
             }
 
             .size-menu {
