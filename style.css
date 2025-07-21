@@ -594,48 +594,55 @@
         }
 
         @media (max-width: 768px) {
-    .welcome-title {
-        font-size: 2rem;
-    }
+            .welcome-title {
+                font-size: 2rem;
+            }
     
-    .matrices-container {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 10px 0;
-        gap: 10px;
-    }
+            .matrices-container {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 10px 0;
+                gap: 10px;
+            }
 
-    .matrix-frame {
-        min-width: 150px;
-        flex-shrink: 0;
-        background-color: transparent;
-        border: none;
-    }
+            .matrix-frame {
+                min-width: 150px;
+                flex-shrink: 0;
+                background-color: var(--clr-matrix-bg);
+                border: 1px solid var(--clr-matrix-border);
+                border-radius: 5px;
+                padding: 8px;
+                width: 100%;
+                max-width: 220px;
+            }
     
-    .matrix-grid {
-        background-color: var(--clr-matrix-bg);
-        border: 1px solid var(--clr-matrix-border);
-        border-radius: 5px;
-        padding: 10px;
-    }
+            .matrix-grid {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+            }
+
+            .matrix-title {
+                color: black;
+            }
     
-    .method-selector {
-        flex-direction: column;
-        align-items: center;
-    }
+            .method-selector {
+                flex-direction: column;
+                align-items: center;
+            }
     
-    .method-btn {
-        width: 100%;
-        margin: 2px 0;
-    }
-    
-    .size-menu {
-        left: 50% !important;
-        transform: translateX(-50%);
-        top: auto !important;
-        bottom: 20px;
-    }
-}
+            .method-btn {
+                width: 100%;
+                margin: 2px 0;
+            }
+
+            .size-menu {
+                left: 50% !important;
+                transform: translateX(-50%);
+                top: auto !important;
+                bottom: 20px;
+            }
+        }
 
