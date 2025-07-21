@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Aplikacje Matematyczne</title>
+
+    <link href="style.css" rel="stylesheet"/></head>
+    <body>
+        <!-- Welcome Screen -->
+        <div class="welcome-screen">
+            <h1 class="welcome-title">Aplikacje Matematyczne</h1>
+            <button class="start-btn">Rozpocznij</button>
+        </div>
+        <!-- Main App Container -->
+        <div class="app-container">
+            <!-- Header -->
+            <div class="header">
+                <button class="menu-btn" id="menuBtn">☰</button>
+                <div class="title" id="title">Aplikacje Matematyczne</div>
+                <div style="position:relative;">
+                    <button class="lang-btn" id="langBtn">🌐</button>
+                    <div class="lang-menu" id="langMenu">
+                    <div data-lang="pl">Polski PL</div>
+                    <div data-lang="en">English GB</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu boczne -->
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-item" id="appMenuItem">Aplikacje</div>
+            <div class="submenu" id="appSubmenu">
+                <div class="back-btn" id="backBtn1">←</div>
+                <div class="submenu-item" data-app="leapYear">Badacz roku przestępnego</div>
+                <div class="submenu-item" data-app="matrixCalc">Kalkulator macierzy</div>
+            </div>
+            <div class="menu-item" id="helpMenuItem">Pomoc</div>
+            <div class="submenu" id="helpSubmenu">
+                <div class="back-btn" id="backBtn2">←</div>
+                <div class="submenu-item">O aplikacji</div>
+                <div class="submenu-item">Instrukcja</div>
+            </div>
+        </div>
+
+        <!-- Badacz roku przestępnego -->
+        <div class="app-content" id="leapYearApp">
+            <div class="leap-year-container">
+                <h1 class="leap-year-title" id="leapYearTitle">Badacz roku przestępnego</h1>
+                <div class="input-container">
+                    <label class="input-label" id="yearLabel">Podaj rok:</label>
+                    <input class="year-input" id="yearInput" type="number"/>
+                </div>
+                <button class="check-btn" id="checkBtn">Oblicz</button>
+                    <div class="result-container" id="resultContainer"></div>
+                <div class="history-container">
+                    <h2 class="history-title" id="historyLabel">Historia:</h2>
+                    <div class="history-box" id="historyBox"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kalkulator macierzy -->
+        <div class="app-content" id="matrixCalcApp">
+            <div class="matrix-container">
+                <h1 class="matrix-Calc-title" id="matrixCalcTitle">Kalkulator macierzy</h1>
+                <div class="controls">
+                <div class="operation-selector">
+                    <div class="operation-label" id="operationLabel">Operacja:</div>
+                    <button class="operation-btn" id="operationBtn">Dodawanie</button>
+                    <div class="operation-menu" id="operationMenu">
+                    <div class="operation-menu-item" data-op="add">Dodawanie</div>
+                    <div class="operation-menu-item" data-op="sub">Odejmowanie</div>
+                    <div class="operation-menu-item" data-op="mul">Mnożenie</div>
+                    <div class="operation-menu-item" data-op="det">Wyznacznik</div>
+                    <div class="operation-menu-item" data-op="inv">Macierz odwrotna</div>
+                    <div class="operation-menu-item" data-op="trans">Transpozycja</div>
+                    <div class="operation-menu-item" data-op="solve">Układ równań</div>
+                </div>
+            </div>
+            <div class="method-selector" id="methodSelector"></div>
+                <div class="action-buttons">
+                    <button class="action-btn" id="computeBtn">Oblicz</button>
+                    <button class="action-btn" id="clearBtn">Wyczyść</button>
+                </div>
+            </div>
+            <div class="matrices-container" id="matricesContainer">
+                <div class="matrix-frame" id="matrixA">
+                    <div class="matrix-title" id="matrixATitle">Macierz A</div>
+                        <div class="matrix-grid" id="matrixAGrid"></div>
+                        <div class="size-menu" id="sizeMenuA">
+                            <div class="size-control">
+                            <span class="size-label" id="rowsALabel">Wiersze:</span>
+                            <input class="size-input" id="rowsA" max="10" min="1" type="number" value="2"/>
+                        </div>
+                        <div class="size-control">
+                            <span class="size-label" id="colsALabel">Kolumny:</span>
+                            <input class="size-input" id="colsA" max="10" min="1" type="number" value="2"/>
+                        </div>
+                            <button class="accept-btn" id="acceptA">Akceptuj</button>
+                        </div>
+                    </div>
+                    <div class="matrix-frame" id="matrixB">
+                        <div class="matrix-title" id="matrixBTitle">Macierz B</div>
+                        <div class="matrix-grid" id="matrixBGrid"></div>
+                        <div class="size-menu" id="sizeMenuB">
+                            <div class="size-control">
+                            <span class="size-label" id="rowsBLabel">Wiersze:</span>
+                            <input class="size-input" id="rowsB" max="10" min="1" type="number" value="2"/>
+                        </div>
+                        <div class="size-control">
+                            <span class="size-label" id="colsBLabel">Kolumny:</span>
+                            <input class="size-input" disabled="" id="colsB" max="10" min="1" type="number" value="2"/>
+                        </div>
+                            <button class="accept-btn" id="acceptB">Akceptuj</button>
+                        </div>
+                    </div>
+                </div>
+                    <div class="result-container-matrix" id="resultBox"></div>
+                    <div class="solution-container" id="solutionBox"></div>
+                </div>
+            </div>
+        </div>
+
+        <script defer="True" src="script.js"></script>
+    </body>
+</html>
