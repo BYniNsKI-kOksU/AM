@@ -116,8 +116,6 @@
         // Menu główne
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
-        const langBtn = document.getElementById('langBtn');
-        const langMenu = document.getElementById('langMenu');
         
         menuBtn.addEventListener('click', function() {
             sideMenu.classList.toggle('open');
@@ -131,26 +129,6 @@
                 sideMenu.classList.remove('open');
             }
         });
-        
-        langBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (!langMenu.contains(e.target) && e.target !== langBtn) {
-                langMenu.style.display = 'none';
-            }
-        });
-        
-        // Zmiana języka
-        langMenu.addEventListener('click', function(e) {
-            if (e.target.dataset.lang) {
-                currentLang = e.target.dataset.lang;
-                updateUI();
-                langMenu.style.display = 'none';
-            }
-        });
 
         // Zmień język
         function switchLanguage(code) {
@@ -158,6 +136,7 @@
             updateUI();
             updateWelcomeScreen();
             document.title = translations[code].title;
+            langMenu.style.display = "none";
             
             document.querySelectorAll('.lang-menu').forEach(menu => {
                 menu.style.display = 'none';
@@ -1067,141 +1046,140 @@
         // Inicjalizacja kalkulatora macierzy
         createMatrix(matrixAGrid, 2, 2);
         createMatrix(matrixBGrid, 2, 2);
-        
-        operationBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            operationMenu.style.display = operationMenu.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        operationMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (e.target.classList.contains('operation-menu-item')) {
-                changeOperation(e.target.dataset.op);
-                operationMenu.style.display = 'none';
-            }
-        });
-        
+         
         // Inicjalizacja
         document.addEventListener('DOMContentLoaded', () => {
-            const sideMenu = document.getElementById('sideMenu');
-            const menuBtn = document.getElementById('menuBtn');
-    
-            // Usuń stare listenery jeśli istnieją
-            menuBtn.removeEventListener('click', toggleSideMenu);
-            document.removeEventListener('click', toggleSideMenu);
-    
-            // Dodaj nowe listenery
-            menuBtn.addEventListener('click', toggleSideMenu);
-            document.addEventListener('click', toggleSideMenu);
-    
-            // Zapobiegaj propagacji kliknięć w samym menu
-            sideMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            });
-
-            // Obsługa kliknięcia poza menu
-            document.addEventListener('click', () => {
-                sizeMenuA.style.display = 'none';
-                sizeMenuB.style.display = 'none';
-                operationMenu.style.display = 'none';
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!langMenu.contains(e.target) && e.target !== langBtn) {
-                    langMenu.style.display = 'none';
+            try {
+                // Sprawdź czy kontenery istnieją
+                if (!matrixAGrid || !matrixBGrid) {
+                    throw new Error("Brak kontenerów macierzy w DOM");
                 }
-            });
-            
-            // Zapobiegaj propagacji kliknięć w menu
-            [operationMenu, sizeMenuA, sizeMenuB].forEach(menu => {
-                menu.addEventListener('click', (e) => {
-                    if (e.target.dataset.lang) switchLanguage(e.target.dataset.lang);
+
+                // Inicjalizuj macierze
+                createMatrix(matrixAGrid, 2, 2);
+                createMatrix(matrixBGrid, 2, 2);
+                
+                // Weryfikacja
+                const inputsA = matrixAGrid.querySelectorAll('.matrix-input');
+                const inputsB = matrixBGrid.querySelectorAll('.matrix-input');
+                console.log(`Utworzono ${inputsA.length} inputów w macierzy A`);
+                console.log(`Utworzono ${inputsB.length} inputów w macierzy B`);
+                
+                if (inputsA.length !== 4 || inputsB.length !== 4) {
+                    throw new Error("Nie udało się poprawnie utworzyć macierzy!");
+                }
+                
+                updateUI();
+                centerMatrices();
+                
+                // Obsługa przycisku języka
+                langBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
                 });
-            });
-            
-            // Obsługa zmiany rozmiaru macierzy A
-            matrixA.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleSizeMenu(matrixA, sizeMenuA);
-            });
-            
-            // Obsługa zmiany rozmiaru macierzy B
-            matrixB.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (getComputedStyle(matrixB).display !== 'none') {
-                    toggleSizeMenu(matrixB, sizeMenuB);
-                    
-                    // Dla układu równań, kolumny są zawsze 1
-                    if (currentOperation === 'solve') {
-                        document.getElementById('colsB').value = 1;
-                        document.getElementById('colsB').disabled = true;
-                    } else {
-                        document.getElementById('colsB').disabled = false;
+                
+                // Obsługa przycisku operacji
+                operationBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    operationMenu.style.display = operationMenu.style.display === 'block' ? 'none' : 'block';
+                });
+                
+                // Obsługa wyboru operacji
+                operationMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (e.target.classList.contains('operation-menu-item')) {
+                        changeOperation(e.target.dataset.op);
+                        operationMenu.style.display = 'none';
                     }
-                }
-            });
-            
-            // Akceptacja nowego rozmiaru macierzy A
-            acceptA.addEventListener('click', () => {
-                const rows = parseInt(rowsA.value);
-                const cols = parseInt(colsA.value);
-                createMatrix(matrixAGrid, rows, cols);
+                });
+                
+                // Obsługa kliknięcia poza menu
+                document.addEventListener('click', () => {
+                    sizeMenuA.style.display = 'none';
+                    sizeMenuB.style.display = 'none';
+                    operationMenu.style.display = 'none';
+                });
 
+                document.addEventListener('click', (e) => {
+                    if (!langMenu.contains(e.target) && e.target !== langBtn) {
+                        langMenu.style.display = 'none';
+                    }
+                });
+                
+                // Zapobiegaj propagacji kliknięć w menu
+                [langMenu, operationMenu, sizeMenuA, sizeMenuB].forEach(menu => {
+                    menu.addEventListener('click', (e) => {
+                        if (e.target.dataset.lang) switchLanguage(e.target.dataset.lang);
+                        e.stopPropagation();
+                    });
+                });
+                
+                // Obsługa przycisków akcji
+                computeBtn.addEventListener('click', compute);
+                clearBtn.addEventListener('click', clearMatrices);
+                
+                // Obsługa zmiany rozmiaru macierzy A
+                matrixA.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleSizeMenu(matrixA, sizeMenuA);
+                });
+                
+                // Obsługa zmiany rozmiaru macierzy B
+                matrixB.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (getComputedStyle(matrixB).display !== 'none') {
+                        toggleSizeMenu(matrixB, sizeMenuB);
+                        
+                        // Dla układu równań, kolumny są zawsze 1
+                        if (currentOperation === 'solve') {
+                            document.getElementById('colsB').value = 1;
+                            document.getElementById('colsB').disabled = true;
+                        } else {
+                            document.getElementById('colsB').disabled = false;
+                        }
+                    }
+                });
+                
+                // Akceptacja nowego rozmiaru macierzy A
+                acceptA.addEventListener('click', () => {
+                    const rows = parseInt(rowsA.value);
+                    const cols = parseInt(colsA.value);
+                    createMatrix(matrixAGrid, rows, cols);
+    
                 if (currentOperation === 'solve') {
                     createMatrix(matrixBGrid, rows, 1);
                     document.getElementById('rowsB').value = rows;
                     document.getElementById('colsB').value = 1;
                     document.getElementById('colsB').disabled = true;
                 }
+    
+                    sizeMenuA.style.display = 'none';
+                });
+                
+                // Akceptacja nowego rozmiaru macierzy B
+                acceptB.addEventListener('click', () => {
+                    const rows = parseInt(rowsB.value);
+                    let cols = parseInt(colsB.value);
 
-                sizeMenuA.style.display = 'none';
-            });
-            
-            // Akceptacja nowego rozmiaru macierzy B
-            acceptB.addEventListener('click', () => {
-                const rows = parseInt(rowsB.value);
-                let cols = parseInt(colsB.value);
-
-                if (currentOperation === 'solve') {
-                    cols = 1;
-                    document.getElementById('colsB').value = 1;
-                }
-
-                if (currentOperation === 'solve' && cols !== 1) {
-                    alert(translations[currentLang].matrixCalc.errors.solve_dim);
+                    if (currentOperation === 'solve') {
+                        cols = 1;
+                        document.getElementById('colsB').value = 1;
+                    }
+    
+                    if (currentOperation === 'solve' && cols !== 1) {
+                    alert(translations[currentLang].errors.solve_dim);
                     document.getElementById('colsB').value = 1;
                     return;
-                }
-
-                createMatrix(matrixBGrid, rows, cols);
-                sizeMenuB.style.display = 'none';
-            });
-
-            const langWrapper = document.querySelector('.welcome-language');
-    const langBtn = langWrapper?.querySelector('.lang-btn');
-    const langMenu = langWrapper?.querySelector('.lang-menu');
-
-    if (langBtn && langMenu) {
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('active');
-        });
-
-        langMenu.addEventListener('click', (e) => {
-            const lang = e.target.dataset.lang;
-            if (lang) {
-                switchLanguage(lang);
-                langMenu.classList.remove('active');
+                    }
+    
+                    createMatrix(matrixBGrid, rows, cols);
+                    sizeMenuB.style.display = 'none';
+                });
+                
+            } catch (error) {
+                console.error("Błąd inicjalizacji:", error);
+                alert("Wystąpił błąd podczas ładowania kalkulatora: " + error.message);
             }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!langWrapper.contains(e.target)) {
-                langMenu.classList.remove('active');
-            }
-        });
-    }
         });   
         
         computeBtn.addEventListener('click', compute);
