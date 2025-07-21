@@ -560,7 +560,7 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 500px;
+            width: 300px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -580,7 +580,7 @@
             font-size: 15px;
             color: black;
             min-height: 60px;
-            width: 500px;
+            width: 300;
             display: none;
             flex-direction: column;
             justify-content: center;
