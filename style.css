@@ -476,9 +476,6 @@
             border-radius: 5px;
             padding: 10px;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .matrix-title {
@@ -487,7 +484,6 @@
             text-align: center;
             margin-bottom: 10px;
             color: black;
-            width: 100%;
         }
 
         .matrix-grid {
@@ -569,9 +565,9 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 100%;                /* pełna szerokość */
-    max-width: 900px;           /* opcjonalnie limit */
-    box-sizing: border-box;
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -622,12 +618,10 @@
             }
 
             .matrix-frame {
-                min-width: 180px;
+                min-width: 150px;
                 flex-shrink: 0;
-                background-color: var(--clr-matrix-bg);
-                border: 1px solid var(--clr-matrix-border);
-                padding: 10;
-                width: auto;
+                background-color: transparent;
+                border: none;
             }
     
             .matrix-grid {
