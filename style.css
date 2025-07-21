@@ -633,6 +633,13 @@
         width: 40px;
         height: 25px;
     }
+
+@media (max-height: 500px) {
+    .result-container-matrix {
+        max-width: 90vw;
+        font-size: 18px;
+    }
+}
 }
 
 /* ================= TABLETY ================= */
