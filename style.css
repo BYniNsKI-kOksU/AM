@@ -593,49 +593,100 @@
             display: flex;
         }
 
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .welcome-title {
-                font-size: 2rem;
-            }
-            
-            .matrices-container {
-                flex-direction: row;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding: 10px 0;
-                gap: 10px;
-            }
+        /* ================= TELEFONY ================= */
+@media (max-width: 600px) {
+    .welcome-title {
+        font-size: 1.5rem;
+    }
 
-            .matrix-frame {
-                min-width: 150px;
-                flex-shrink: 0;
-                background-color: transparent;
-                border: none;
-            }
-            
-            .matrix-grid {
-                background-color: var(--clr-matrix-bg);
-                border: 1px solid var(--clr-matrix-border);
-                border-radius: 5px;
-                padding: 10px;
-            }
-            
-            .method-selector {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .method-btn {
-                width: 100%;
-                margin: 2px 0;
-            }
-            
-            .size-menu {
-                left: 50% !important;
-                transform: translateX(-50%);
-                top: auto !important;
-                bottom: 20px;
-            }
-        }
+    .start-btn, .check-btn, .action-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title {
+        position: static;
+        text-align: left;
+        font-size: 1.2rem;
+    }
+
+    .matrices-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .result-container-matrix, .solution-container {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    .year-input {
+        width: 100%;
+    }
+
+    .matrix-input {
+        width: 40px;
+        height: 25px;
+    }
+}
+
+/* ================= TABLETY ================= */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .start-btn, .check-btn, .action-btn {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .matrices-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .result-container-matrix, .solution-container {
+        width: 80%;
+        font-size: 20px;
+    }
+
+    .matrix-input {
+        width: 45px;
+        height: 28px;
+    }
+}
+
+/* ================= DESKTOPY ================= */
+@media (min-width: 1025px) {
+    .welcome-title {
+        font-size: 3rem;
+    }
+
+    .start-btn, .check-btn, .action-btn {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .result-container-matrix, .solution-container {
+        width: 500px;
+    }
+
+    .matrix-input {
+        width: 50px;
+        height: 30px;
+    }
+}
