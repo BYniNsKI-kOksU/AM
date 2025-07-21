@@ -50,7 +50,7 @@
                 <h1 class="leap-year-title" id="leapYearTitle">Badacz roku przestępnego</h1>
                 <div class="input-container">
                     <label class="input-label" id="yearLabel">Podaj rok:</label>
-                    <input class="year-input" id="yearInput" type="number"/>
+                    <input class="year-input" id="yearInput" type="number" inputmode="numeric" pattern="[0-9]*"/>
                 </div>
                 <button class="check-btn" id="checkBtn">Oblicz</button>
                     <div class="result-container" id="resultContainer"></div>
@@ -92,11 +92,11 @@
                         <div class="size-menu" id="sizeMenuA">
                             <div class="size-control">
                             <span class="size-label" id="rowsALabel">Wiersze:</span>
-                            <input class="size-input" id="rowsA" max="10" min="1" type="number" value="2"/>
+                            <input class="size-input" id="rowsA" max="10" min="1" type="number" inputmode="numeric" pattern="[0-9]*" value="2"/>
                         </div>
                         <div class="size-control">
                             <span class="size-label" id="colsALabel">Kolumny:</span>
-                            <input class="size-input" id="colsA" max="10" min="1" type="number" value="2"/>
+                            <input class="size-input" id="colsA" max="10" min="1" type="number" inputmode="numeric" pattern="[0-9]*" value="2"/>
                         </div>
                             <button class="accept-btn" id="acceptA">Akceptuj</button>
                         </div>
@@ -107,11 +107,11 @@
                         <div class="size-menu" id="sizeMenuB">
                             <div class="size-control">
                             <span class="size-label" id="rowsBLabel">Wiersze:</span>
-                            <input class="size-input" id="rowsB" max="10" min="1" type="number" value="2"/>
+                            <input class="size-input" id="rowsB" max="10" min="1" type="number" inputmode="numeric" pattern="[0-9]*" value="2"/>
                         </div>
                         <div class="size-control">
                             <span class="size-label" id="colsBLabel">Kolumny:</span>
-                            <input class="size-input" disabled="" id="colsB" max="10" min="1" type="number" value="2"/>
+                            <input class="size-input" disabled="" id="colsB" max="10" min="1" type="number" inputmode="numeric" pattern="[0-9]*" value="2"/>
                         </div>
                             <button class="accept-btn" id="acceptB">Akceptuj</button>
                         </div>
