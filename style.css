@@ -560,8 +560,7 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 100%;
-            max-width: 500px;
+            width: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -623,7 +622,7 @@
     }
 
     .result-container-matrix, .solution-container {
-        width: 90%;
+        width: calc(100% - 40px);
         font-size: 18px;
     }
 
