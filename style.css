@@ -560,9 +560,9 @@
             font-size: 22px;
             color: black;
             min-height: 100px;
-            width: 100%;                /* pełna szerokość */
-    max-width: 900px;           /* opcjonalnie limit */
-    box-sizing: border-box;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
